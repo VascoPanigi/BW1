@@ -286,7 +286,7 @@ const displayQuestion = (index) => {
 };
 
 const redirectToResultPage = () =>
-  (window.location.href = `results.html?a=${correctAnswers.length}&b=${amountNum}`); // baretto passaggio risposte corrette shbdyady
+  (window.location.href = `results.html?a=${correctAnswers.length}&b=${amountNum}`); // baretto passaggio risposte corrette + totale domande
 
 //todo1: aggiornare il question alla fine della pagina
 //todo2 aggiungere un bottone alla fine della pagina per mandare avanti, le
