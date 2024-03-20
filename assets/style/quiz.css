@@ -1,0 +1,270 @@
+body {
+  min-width: 900px;
+}
+
+#text {
+  font-size: 16px;
+  line-height: 1.1em;
+  margin-top: 2em;
+}
+
+h2 {
+  font-size: 35px;
+}
+
+span {
+  color: #d20094;
+}
+
+h3 {
+  font-size: 30px;
+}
+
+.text_1 {
+  font-size: 14px;
+  margin-top: 3em;
+  margin-left: 1em;
+  margin-bottom: 1em;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+#options {
+  margin-top: 10em;
+  margin-bottom: 2em;
+  margin-left: 1em;
+  align-self: flex-start;
+  display: inline-block;
+}
+
+optgroup {
+  color: #22284e;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+select:hover {
+  box-shadow: -1px 1px 20px -1px rgba(0, 255, 255, 0.86);
+}
+
+select {
+  display: inline;
+  color: #000000;
+  background-color: #00ffff;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  margin-left: 1.5em;
+  padding: 2px;
+  outline: none;
+}
+
+option {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000000;
+}
+
+.align {
+  margin: 0;
+}
+
+.startBtn-container {
+  margin: 0;
+}
+
+#flex {
+  margin-top: 4em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* margin-top: 4em;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30em;*/
+}
+
+#startBtn {
+  margin-top: 0;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.question-title-container {
+  text-align: center;
+  margin-top: 12em;
+  margin-bottom: 3em;
+  max-width: 750px;
+}
+
+.question-title {
+  font-weight: 500;
+  line-height: 1.2em;
+  font-size: 3em;
+}
+
+.questionBtn {
+  background: linear-gradient(#22284e, #22284e) padding-box,
+    linear-gradient(180deg, #adb5e4, #22284e) border-box;
+  color: #e2ffff;
+  padding: 1.1em 3.2em;
+  border: 5px solid transparent;
+  border-radius: 50px;
+  display: inline-block;
+  font-size: 1.1em;
+  font-weight: 500;
+  margin-block: 1em;
+  margin-right: 2em;
+  max-width: 350px;
+  min-width: 350px;
+}
+
+/* {
+    background-color: #ae0187;
+    border-radius: 60px;
+    border: 2px solid white;
+} */
+
+.questionBtn:hover {
+  box-shadow: none;
+}
+
+.questionBtn.clickedBtn {
+  background: linear-gradient(#aa0085, #81005d) padding-box,
+    linear-gradient(180deg, #f1bde3, #81005d) border-box;
+}
+
+.question-container {
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-width: 780px;
+  max-width: 1000px;
+}
+
+h4 {
+  font-weight: 700;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.span {
+  color: #ae0187;
+  font-weight: 700;
+}
+
+footer {
+  padding-top: 2.5em;
+  padding-bottom: 2em;
+}
+
+.question-number {
+  font-size: 1.3em;
+  font-weight: 400;
+  letter-spacing: 3px;
+}
+
+.next-question-container {
+  margin-left: 45em;
+  margin-top: 5em;
+}
+
+.next-question-button {
+  font-family: "Outfit", sans-serif;
+  margin: 0;
+  padding-block: 0.5em;
+  padding-inline: 2, 5em;
+  border-radius: 20px;
+}
+
+.next-question-button:hover {
+  background-color: #d20094;
+  box-shadow: none;
+}
+
+.invisible {
+  display: none;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container {
+  width: 180px;
+  padding: 50px 0;
+  border-radius: 8px;
+  row-gap: 30px;
+  margin-top: -3%;
+}
+
+.circular-progress {
+  position: relative;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background: conic-gradient(#00ffff 3.6deg, #827f7f47 0deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8%;
+}
+.circular-progress::before {
+  content: "";
+  position: absolute;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  background-color: #411757;
+}
+.progress-value {
+  position: relative;
+  font-size: 40px;
+  font-weight: 400;
+  color: #ffffff;
+  margin-left: 0.1em;
+  padding-top: 0;
+}
+.text {
+  font-size: 30px;
+  font-weight: 200;
+  color: #606060;
+}
+
+.divP p {
+  text-align: center;
+  margin: auto;
+  position: relative;
+  color: white;
+  font-weight: 200;
+}
+
+.pi {
+  margin-left: 0px;
+  position: relative;
+  color: white;
+  font-size: 0.5em;
+  margin-top: -20px;
+  margin-bottom: -20px;
+  font-weight: 200;
+  font-family: "Inter", sans-serif;
+}
+
+#marginP {
+  margin-left: 5px;
+}

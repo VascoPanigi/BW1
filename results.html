@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./assets/style/reset.css" rel="stylesheet" />
+    <link href="./assets/style/index.css" rel="stylesheet" />
+    <link href="./assets/style/results.css" rel="stylesheet" />
+    <title>Results_page</title>
+  </head>
+  <body>
+    <header>
+      <img id="logo" src="./assets/images/epicode_logo.png" />
+    </header>
+    <main>
+      <section>
+        <h1>Results</h1>
+        <h3>The summary of your answers:</h3>
+      </section>
+      <div class="container">
+        <div class="score-container">
+          <h2>Correct</h2>
+          <!-- QUESTO DIV SCORE DOVRA' SCOMPARIRE E DIVENTARE 
+        RESPONSIVE CON JS -->
+          <h2 class="score">62.5%</h2>
+          <p class="fontFix">2/6 questions</p>
+        </div>
+        <div class="chart-container">
+          <canvas class="my-chart"> </canvas>
+          <div class="donut-inner">
+            <h3>Congratulations!</h3>
+            <h5>You passed the exam.</h5>
+            <p>
+              We'll send you the certificate in few minutes. Check your email
+              (including promotions / spam folder)
+            </p>
+          </div>
+        </div>
+        <div class="score-container fix">
+          <h2>Wrong</h2>
+          <h2 class="score">27.5%</h2>
+          <p class="fontFix">2/6 questions</p>
+        </div>
+      </div>
+      <div class="button-container">
+        <button id="rating-btn">RATE US</button>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="results.js"></script>
+  </body>
+</html>

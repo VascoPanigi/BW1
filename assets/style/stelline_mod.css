@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Outfit:wght@100..900&display=swap");
+
+* {
+  color: #e2ffff;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Outfit", sans-serif;
+}
+
+h1 {
+  font-size: 60px;
+  font-weight: 700;
+  margin-top: 1.5em;
+  margin-bottom: 0.3em;
+}
+
+h2 {
+  font-size: 30px;
+  margin: 0;
+  line-height: 1.5em;
+}
+
+body {
+  height: 100vh;
+  background-image: url(../images/bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 80%;
+  min-width: 500px;
+  margin-inline: auto;
+}
+
+header img {
+  width: 12em;
+  margin-left: 1em;
+  margin-top: 2em;
+}
+
+button {
+  margin-top: 6rem;
+  margin-bottom: 1em;
+  background-color: #00ffff;
+  color: rgb(3, 3, 34);
+  font-size: 25px;
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+  border: none;
+  padding-left: 2.3em;
+  padding-right: 2.3em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  cursor: pointer;
+}
+
+button:hover {
+  box-shadow: -1px 1px 40px -1px rgba(0, 255, 255, 0.86);
+}
+
+.highlight {
+  color: #d20094;
+}
+
+.mainBody {
+  text-align: center;
+}
+
+input {
+  background-color: transparent;
+  width: 800px;
+  height: 20px;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #d20094;
+}
+
+.starCheck {
+  cursor: pointer;
+}
+
+.starRating {
+  margin-top: 2.5em;
+  margin-bottom: 4em;
+}
+
+.star {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  margin: 10px;
+  fill: #d20094;
+}
+
+form h2 {
+  margin-bottom: 1.5em;
+  margin-top: 2.5em;
+}
+
+.starsClass {
+  cursor: pointer;
+}
+
+.starsClass {
+  fill: #0c1035;
+}
+
+.newStarsClass {
+  fill: #00ffff;
+  
+}
+
+.space {
+  margin-left: 0.4em;
+  margin-right: 0.4em;
+}
+
+#comment {
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-bottom: 0.5em;
+}
+
+svg:hover {
+  filter: drop-shadow(-5px 5px 20px #00ffff);
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 60px;
+  text-align: center;
+  margin-top: 4.5em;
+  margin-bottom: 1em;
+}
+
+p {
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 2em;
+}

@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Outfit:wght@100..900&display=swap");
+
+* {
+  color: #e2ffff;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Outfit", sans-serif;
+}
+
+h1 {
+  font-size: 60px;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+p {
+  line-height: 1.8em;
+}
+
+body {
+  height: 100vh;
+  background-image: url(../images/bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 80%;
+  min-width: 500px;
+  margin-inline: auto;
+}
+
+header img {
+  width: 12em;
+  margin-left: 1em;
+  margin-top: 2em;
+}
+
+button {
+  margin-top: 4rem;
+  background-color: #00ffff;
+  color: rgb(3, 3, 34);
+  font-size: 1.5em;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  border: none;
+  padding-block: 1em;
+  padding-inline: 3em;
+}
+
+button:hover {
+  box-shadow: -1px 1px 40px -1px rgba(0, 255, 255, 0.86);
+}
+
+.highlight {
+  color: #d20094;
+}
+
+/* .main-page-form{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+} */

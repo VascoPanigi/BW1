@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Epicode_quiz</title>
+    <link rel="stylesheet" href="/assets/style/reset.css" />
+    <link rel="stylesheet" href="/assets/style/index.css" />
+    <link rel="stylesheet" href="/assets/style/quiz.css" />
+  </head>
+  <body>
+    <header>
+      <div>
+        <img src="/assets/images/epicode_logo.png" alt="logo" />
+      </div>
+      <div id="clock-container" class="container invisible">
+        <div class="circular-progress invisible">
+          <div id="divP">
+            <p id="marginP" class="pi">SECONDS</p>
+            <p class="progress-value">60</p>
+            <p class="pi">REMAININGS</p>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div id="options">
+        <h2 class="bold">Before you start:</h2>
+        <p id="text">
+          Please remember to choose the
+          <span class="bold">questions difficulty</span> and the
+          <span class="bold">number of questions</span> you want in your quiz.
+        </p>
+        <div>
+          <p class="text_1">Select the level of the questions</p>
+          <select>
+            <option>Easy</option>
+            <option>Medium</option>
+            <option>Hard</option>
+          </select>
+          <p class="text_1">Select the number of questions</p>
+          <select>
+            <option>10</option>
+            <option>20</option>
+            <option>30</option>
+          </select>
+        </div>
+      </div>
+      <div id="flex">
+        <div class="align">
+          <h3 class="bold">Good luck!</h3>
+        </div>
+        <div class="startBtn-container">
+          <button id="startBtn">START</button>
+        </div>
+      </div>
+      <!-- <section class="question-title-container">
+        <h1 class="question-title">How can I create a checkbox in HTML?</h1>
+      </section>
+
+      <div class="question-container">
+        <button class="questionBtn">ciao sono una risposta</button>
+        <button class="questionBtn clickedBtn">ciao sono una risposta</button>
+        <button class="questionBtn">ciao sono una risposta</button>
+        <button class="questionBtn">ciao sono una risposta </button>
+      </div>
+
+      <div class="next-question-container">
+        <button class="next-question-button">Next</button>
+      </div> -->
+    </main>
+    <footer>
+      <h4 id="questionNumH4" class="question-number invisible">
+        QUESTION <span id="questionNumber"> </span>
+        <span class="span">/10</span>
+      </h4>
+    </footer>
+    <script src="/quiz.js"></script>
+  </body>
+</html>

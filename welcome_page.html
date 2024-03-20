@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./assets/style/reset.css" rel="stylesheet" />
+    <link href="./assets/style/index.css" rel="stylesheet" />
+    <link href="assets/style/welcome_page.css" rel="stylesheet">
+    <title>Welcome_page</title>
+  </head>
+  <body>
+    <header>
+      <img src="./assets/images/epicode_logo.png" id="logo" />
+    </header>
+    <main>
+        <h1>Welcome to <span class="bold">your exam</span></h1>
+        <h3 class="highlight bold">Instructions<h/3>
+        <p>We don't expect most engineers to know the answers to all of these questions, so don't worry if you're unsure of a few of them.</p>
+        <ul>
+            <li>Each question is <span class="bold">timed</span> and can only be <span class="bold">answered once</span>.</li>
+            <li>Changing browser tab or opening other windows will <span class="bold">invalidate the question</span>.</li>
+            <li>This exam will take approx. <span class="bold">0-5 minutes</span>.</li>
+        </ul>
+        <div id="flex">
+            <div>
+            <div class="checkbox-wrapper-28">
+                <input id="tmp-28" type="checkbox" class="promoted-input-checkbox" required/>
+                <svg><use xlink:href="#checkmark-28" /></svg>
+                <label for="tmp-28" class="bold smallerFont">
+                  I promise to answer myself without help from anyone   
+                </label>
+                <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+                  <symbol id="checkmark-28" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-miterlimit="10" fill="none"  d="M22.9 3.7l-15.2 16.6-6.6-7.1">
+                    </path>
+                  </symbol>
+                </svg>
+              </div>
+        </div>
+            <button id="button" class="bold">PROCEED</button>
+        </div>
+    </main>
+    <script src="welcome_page.js"></script>
+  </body>
+</html>

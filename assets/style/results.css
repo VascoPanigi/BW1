@@ -1,0 +1,107 @@
+body {
+  min-width: 1000px;
+  font-weight: 400;
+}
+
+#logo {
+  margin-left: 0;
+}
+
+h1 {
+  font-weight: 700;
+  line-height: 1.5em;
+}
+
+h2 {
+  font-size: 3.5em;
+}
+
+.fix {
+  padding-left: 1.5em;
+  text-align: right;
+}
+
+h3 {
+  font-size: 1.8em;
+}
+
+.fontFix {
+  font-size: 20px;
+  font-weight: 300;
+}
+
+main > section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-block: 1.2em;
+  margin-bottom: 4em;
+}
+
+button {
+  background-color: transparent;
+  border: 2px solid #e2ffff;
+  color: #e2ffff;
+  padding-block: 0.8em;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5em;
+}
+
+button:hover {
+  box-shadow: -1px 1px 40px -1px rgba(255, 255, 255, 0.86);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score {
+  font-weight: 700;
+}
+
+.chart-container {
+  min-width: 390px;
+  max-width: 60%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 400px;
+  height: 400px;
+}
+
+.donut-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.my-chart {
+  width: 100%;
+  height: auto;
+}
+
+.donut-inner > p {
+  margin-top: 19px;
+  font-size: 0.9em;
+  font-weight: 300;
+  line-height: 20px;
+}
+
+.donut-inner > h5 {
+  margin-top: 5px;
+  color: #00ffff;
+  font-size: 1.3em;
+}
+
+.donut-inner > h3 {
+  font-size: 1.5em;
+}
