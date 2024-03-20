@@ -113,6 +113,7 @@ const selectionInput = document.querySelectorAll(".selectButtonLv");
 
 const inputDifficulty = document.getElementById("selectDifficulty");
 const inputAmount = document.getElementById("selectAmount");
+let numTotAns = document.getElementById("totNumAns");
 
 let questionsArray = [];
 let amountNum = 10;
@@ -125,6 +126,7 @@ inputDifficulty.addEventListener("change", function (e) {
 
 inputAmount.addEventListener("change", function (e) {
   amountNum = e.target.value;
+  numTotAns.innerHTML = "/" + amountNum;
   updateApiUrl();
 });
 console.log(questionsArray);
@@ -283,7 +285,8 @@ const displayQuestion = (index) => {
   questionNumber.innerText = currentQuestionIndex + 1;
 };
 
-const redirectToResultPage = () => (window.location.href = "results.html");
+const redirectToResultPage = () =>
+  (window.location.href = `results.html?a=${correctAnswers.length}&b=${amountNum}`); // baretto passaggio risposte corrette shbdyady
 
 //todo1: aggiornare il question alla fine della pagina
 //todo2 aggiungere un bottone alla fine della pagina per mandare avanti, le

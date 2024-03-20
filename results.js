@@ -5,9 +5,17 @@
 // import correct_answer from 'quiz.js'
 // import totalScore from 'quiz.js'
 
+let params = new URLSearchParams(window.location.search); // recupero parametri passati all url barettp
+let risposteCorrette = params.get("a"); // recupero risposte corrette parametro url baretto
+console.log(risposteCorrette);
+
+let totaledomande = params.get("b"); // recupero domande totali parametro url baretto
+
+let rispostsbagliate = totaledomande - risposteCorrette; // calcolo per le risposte sbagliate baretto
+
 const labels1 = ["right", "wrong"];
-let data1 = [80, 20];
-const colors1 = ["#D20094", "#00FFFF"];
+let data1 = [risposteCorrette, rispostsbagliate];
+const colors1 = ["#00FFFF", "#D20094"];
 
 const myChart = document.querySelector(".my-chart");
 
