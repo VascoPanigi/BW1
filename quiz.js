@@ -5,7 +5,7 @@ btn.addEventListener("click", () => {
     } )  
    });*/
 
- /* const btn = document.getElementsById("startBtn");
+/* const btn = document.getElementsById("startBtn");
   btn.addEventListener("click", () => { 
           btn.style.backgroundColor = "#9ffcfc";
       });*/
@@ -109,19 +109,21 @@ const questions = [
   },
 ];
 
-const selectionInput = document.querySelectorAll(".selectButtonLv")
-
+const selectionInput = document.querySelectorAll(".selectButtonLv");
 
 let questionsArray = [];
 let amountNum = 5;
-let difficultySel = "medium"
-console.log(questionsArray)
-const apiUrl ="https://opentdb.com/api.php?amount=" + amountNum + "&category=18&difficulty=" + difficultySel;
+let difficultySel = "medium";
+console.log(questionsArray);
+const apiUrl =
+  "https://opentdb.com/api.php?amount=" +
+  amountNum +
+  "&category=18&difficulty=" +
+  difficultySel;
 // commento//
 async function fetchQuestions() {
   const response = await fetch(apiUrl);
   const data = await response.json();
-
 
   data.results.forEach((question) => {
     questionsArray.push({
@@ -162,12 +164,12 @@ let progress;
 
 startButton.addEventListener("click", async () => {
   clearPage();
-  
+
   const questionsArray = await fetchQuestions();
   displayQuestion(0);
   questionNumberHeader.classList.remove("invisible");
   clockContainer.classList.remove("invisible");
-  console.log(questionsArray)
+  console.log(questionsArray);
 });
 
 const clearPage = () => {
@@ -281,10 +283,10 @@ const redirectToResultPage = () => (window.location.href = "results.html");
 // setTimeout(console.log(shuffledQuestions), 5000);
 
 // Function to start the timer
-function startTimer() {
-  let progressStartValue = 5; // Initial value of timer
-  let progressEndValue = 0; // End value of timer
-  let degreesPerUnit = 360 / (progressStartValue - progressEndValue);
+const startTimer = () => {
+  const progressStartValue = 5;
+  const progressEndValue = 0;
+  const degreesPerUnit = 360 / (progressStartValue - progressEndValue);
 
   progress = setInterval(() => {
     progressStartValue--;
@@ -297,22 +299,21 @@ function startTimer() {
 
     if (progressStartValue == progressEndValue) {
       clearInterval(progress);
-      goToNextQuestion(); // Call function to go to next question
+      goToNextQuestion();
     }
   }, speed);
-}
+};
 
-// Function to go to the next question
-function goToNextQuestion() {
+const goToNextQuestion = () => {
   clearInterval(progress);
   let nextIndex = currentQuestionIndex + 1;
   if (nextIndex < questionsArray.length) {
     clearPage();
     currentQuestionIndex = nextIndex;
     displayQuestion(currentQuestionIndex);
-    startTimer(); // Start the timer for the next question
+    startTimer();
   } else {
     console.log("End of questions.");
     redirectToResultPage();
   }
-}
+};
