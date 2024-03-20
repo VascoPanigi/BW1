@@ -5,7 +5,7 @@ btn.addEventListener("click", () => {
     } )  
    });*/
 
- /* const btn = document.getElementsById("startBtn");
+/* const btn = document.getElementsById("startBtn");
   btn.addEventListener("click", () => { 
           btn.style.backgroundColor = "#9ffcfc";
       });*/
@@ -109,19 +109,43 @@ const questions = [
   },
 ];
 
-const selectionInput = document.querySelectorAll(".selectButtonLv")
+const selectionInput = document.querySelectorAll(".selectButtonLv");
 
+const inputDifficulty = document.getElementById("selectDifficulty");
+const inputAmount = document.getElementById("selectAmount");
 
 let questionsArray = [];
-let amountNum = 5;
-let difficultySel = "medium"
-console.log(questionsArray)
-const apiUrl ="https://opentdb.com/api.php?amount=" + amountNum + "&category=18&difficulty=" + difficultySel;
+let amountNum = 10;
+let difficultySel = "easy";
+
+inputDifficulty.addEventListener("change", function (e) {
+  difficultySel = e.target.value;
+  updateApiUrl();
+});
+
+inputAmount.addEventListener("change", function (e) {
+  amountNum = e.target.value;
+  updateApiUrl();
+});
+console.log(questionsArray);
+
+let apiUrl =
+  "https://opentdb.com/api.php?amount=" +
+  amountNum +
+  "&category=18&difficulty=" +
+  difficultySel.toLowerCase();
+
+function updateApiUrl() {
+  apiUrl =
+    "https://opentdb.com/api.php?amount=" +
+    amountNum +
+    "&category=18&difficulty=" +
+    difficultySel.toLowerCase();
+}
 // commento//
 async function fetchQuestions() {
   const response = await fetch(apiUrl);
   const data = await response.json();
-
 
   data.results.forEach((question) => {
     questionsArray.push({
@@ -162,12 +186,12 @@ let progress;
 
 startButton.addEventListener("click", async () => {
   clearPage();
-  
+
   const questionsArray = await fetchQuestions();
   displayQuestion(0);
   questionNumberHeader.classList.remove("invisible");
   clockContainer.classList.remove("invisible");
-  console.log(questionsArray)
+  console.log(questionsArray);
 });
 
 const clearPage = () => {
