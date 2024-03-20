@@ -5,13 +5,25 @@
 // import correct_answer from 'quiz.js'
 // import totalScore from 'quiz.js'
 
-let params = new URLSearchParams(window.location.search); // recupero parametri passati all url barettp
-let risposteCorrette = params.get("a"); // recupero risposte corrette parametro url baretto
+let params = new URLSearchParams(window.location.search); // recupero parametri passati all url baretto
+let risposteCorrette = parseInt(params.get("a")); // Recupero risposte corrette parametro URL e converto in numero intero baretto
 console.log(risposteCorrette);
 
-let totaledomande = params.get("b"); // recupero domande totali parametro url baretto
+let totaledomande = parseInt(params.get("b")); // Recupero domande totali parametro URL e converto in numero intero baretto
 
-let rispostsbagliate = totaledomande - risposteCorrette; // calcolo per le risposte sbagliate baretto
+let rispostsbagliate = totaledomande - risposteCorrette; // Calcolo delle risposte sbagliate baretto
+
+let scorepositivo = document.querySelector("#positiveScore");
+let scorenegativo = document.querySelector("#negativeScore");
+
+function calcolaPercentuale(totaledomande, rispostsbagliate) {
+  return (rispostsbagliate / totaledomande) * 100;
+}
+
+let percentuale = calcolaPercentuale(totaledomande, rispostsbagliate);
+
+scorenegativo.innerHTML = "%" + percentuale;
+scorepositivo.innerHTML = "%" + (100 - percentuale); // Calcolo della percentuale positiva baretto
 
 const labels1 = ["right", "wrong"];
 let data1 = [risposteCorrette, rispostsbagliate];
