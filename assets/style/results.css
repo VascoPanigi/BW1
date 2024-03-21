@@ -102,6 +102,10 @@ button:hover {
   font-size: 1.3em;
 }
 
+#messageResH5 {
+  color: #d20094;
+}
+
 .donut-inner > h3 {
   font-size: 1.5em;
 }
