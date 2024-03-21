@@ -20,8 +20,20 @@ function calcolaPercentuale(totaledomande, rispostsbagliate) {
   return (rispostsbagliate / totaledomande) * 100;
 }
 
-let percentuale = calcolaPercentuale(totaledomande, rispostsbagliate);
-
+let percentuale = Math.round(
+  calcolaPercentuale(totaledomande, rispostsbagliate)
+);
+let questions = document.getElementsByClassName("fontFix");
+for (let i = 0; i < questions.length; i++) {
+  questions[i].innerHTML =
+    risposteCorrette + "/" + totaledomande + " questions";
+}
+let questionWrong = document.getElementsByClassName("fontFix2");
+for (let i = 0; i < questions.length; i++) {
+  questionWrong[i].innerHTML =
+    rispostsbagliate + "/" + totaledomande + " questions";
+}
+questions.innerHTML;
 scorenegativo.innerHTML = percentuale + "%";
 scorepositivo.innerHTML = 100 - percentuale + "%"; // Calcolo della percentuale positiva baretto
 

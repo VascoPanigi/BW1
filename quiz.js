@@ -311,7 +311,7 @@ const shuffleArray = (array) => {
 
 // Function to start the timer
 function startTimer() {
-  let progressStartValue = 10;
+  let progressStartValue = 60;
   let progressEndValue = 0;
   let degreesPerUnit = 360 / (progressStartValue - progressEndValue);
 

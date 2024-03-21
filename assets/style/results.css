@@ -29,6 +29,10 @@ h3 {
   font-size: 20px;
   font-weight: 300;
 }
+.fontFix2 {
+  font-size: 20px;
+  font-weight: 300;
+}
 
 main > section {
   display: flex;
