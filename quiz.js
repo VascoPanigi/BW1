@@ -111,15 +111,39 @@ const questions = [
 
 const selectionInput = document.querySelectorAll(".selectButtonLv");
 
+const inputDifficulty = document.getElementById("selectDifficulty");
+const inputAmount = document.getElementById("selectAmount");
+let numTotAns = document.getElementById("totNumAns");
+
 let questionsArray = [];
-let amountNum = 5;
-let difficultySel = "medium";
+let amountNum = 10;
+let difficultySel = "easy";
+
+inputDifficulty.addEventListener("change", function (e) {
+  difficultySel = e.target.value;
+  updateApiUrl();
+});
+
+inputAmount.addEventListener("change", function (e) {
+  amountNum = e.target.value;
+  numTotAns.innerHTML = "/" + amountNum;
+  updateApiUrl();
+});
 console.log(questionsArray);
-const apiUrl =
+
+let apiUrl =
   "https://opentdb.com/api.php?amount=" +
   amountNum +
   "&category=18&difficulty=" +
-  difficultySel;
+  difficultySel.toLowerCase();
+
+function updateApiUrl() {
+  apiUrl =
+    "https://opentdb.com/api.php?amount=" +
+    amountNum +
+    "&category=18&difficulty=" +
+    difficultySel.toLowerCase();
+}
 // commento//
 async function fetchQuestions() {
   const response = await fetch(apiUrl);
@@ -261,7 +285,8 @@ const displayQuestion = (index) => {
   questionNumber.innerText = currentQuestionIndex + 1;
 };
 
-const redirectToResultPage = () => (window.location.href = "results.html");
+const redirectToResultPage = () =>
+  (window.location.href = `results.html?a=${correctAnswers.length}&b=${amountNum}`); // baretto passaggio risposte corrette + totale domande
 
 //todo1: aggiornare il question alla fine della pagina
 //todo2 aggiungere un bottone alla fine della pagina per mandare avanti, le
