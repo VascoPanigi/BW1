@@ -318,3 +318,4 @@ const createRecap = () => {
 // SE nell'array in cui abbiamo pushato tutte le risposte
 //corrette troviamo una risposta === a quella corrente del forEach -> non facciamo niente
 //se invece lo trova ma nell-altro array, cambia la classe in rosso
+//ciao sono un commento
