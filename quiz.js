@@ -206,6 +206,7 @@ const displayQuestion = (index) => {
   //questo dato andra' ad aggiornare il results.js
   // const totalScore = questions.length;
   // console.log(totalScore)
+  clearInterval(progress);
   startTimer();
   const correctAnswersLen = correctAnswers.length;
   const currentQuest = questionsArray[index];
@@ -309,7 +310,7 @@ const redirectToResultPage = () =>
 
 // Function to start the timer
 function startTimer() {
-  let progressStartValue = 5; // Initial value of timer
+  let progressStartValue = 60; // Initial value of timer
   let progressEndValue = 0; // End value of timer
   let degreesPerUnit = 360 / (progressStartValue - progressEndValue);
 
@@ -337,7 +338,7 @@ function goToNextQuestion() {
     clearPage();
     currentQuestionIndex = nextIndex;
     displayQuestion(currentQuestionIndex);
-    startTimer(); // Start the timer for the next question
+    //startTimer(); // Start the timer for the next question
   } else {
     console.log("End of questions.");
     redirectToResultPage();
