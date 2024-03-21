@@ -25,6 +25,21 @@ let percentuale = calcolaPercentuale(totaledomande, rispostsbagliate);
 scorenegativo.innerHTML = "%" + percentuale;
 scorepositivo.innerHTML = "%" + (100 - percentuale); // Calcolo della percentuale positiva baretto
 
+let messH3 = document.getElementById("messageResH3");
+let messH5 = document.getElementById("messageResH5");
+let messP = document.getElementById("messageResP");
+
+if (percentuale <= 60) {
+  messH3.innerHTML = "Congratulations!";
+  messH5.innerHTML = "You passed the exam.";
+  messP.innerHTML =
+    " We'll send you the certificate in few minutes. Check your emai";
+} else {
+  messH3.innerHTML = "We're sorry...";
+  messH5.innerHTML = "You didn't pass the exam";
+  messP.innerHTML = "we have sent you an email to repeat the exam"; // Cambio del messaggio nel cerchio in base al fatto che hai superat ono l'esame baretto
+}
+
 const labels1 = ["right", "wrong"];
 let data1 = [risposteCorrette, rispostsbagliate];
 const colors1 = ["#00FFFF", "#D20094"];
