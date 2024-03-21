@@ -206,6 +206,7 @@ const displayQuestion = (index) => {
   //questo dato andra' ad aggiornare il results.js
   // const totalScore = questions.length;
   // console.log(totalScore)
+  clearInterval(progress);
   startTimer();
   const correctAnswersLen = correctAnswers.length;
   const currentQuest = questionsArray[index];
