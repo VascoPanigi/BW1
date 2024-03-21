@@ -39,7 +39,7 @@ if (percentuale <= 40) {
   messH5.innerHTML = "You didn't pass the exam.";
   messP.innerHTML = "Please conctact us if you want to take the test again!"; // Cambio del messaggio nel cerchio in base al fatto che hai superat ono l'esame baretto
 }
-
+// commento
 const labels1 = ["right", "wrong"];
 let data1 = [risposteCorrette, rispostsbagliate];
 const colors1 = ["#00FFFF", "#D20094"];
