@@ -111,15 +111,39 @@ const questions = [
 
 const selectionInput = document.querySelectorAll(".selectButtonLv");
 
+const inputDifficulty = document.getElementById("selectDifficulty");
+const inputAmount = document.getElementById("selectAmount");
+let numTotAns = document.getElementById("totNumAns");
+
 let questionsArray = [];
-let amountNum = 5;
-let difficultySel = "medium";
+let amountNum = 10;
+let difficultySel = "easy";
+
+inputDifficulty.addEventListener("change", function (e) {
+  difficultySel = e.target.value;
+  updateApiUrl();
+});
+
+inputAmount.addEventListener("change", function (e) {
+  amountNum = e.target.value;
+  numTotAns.innerHTML = "/" + amountNum;
+  updateApiUrl();
+});
 console.log(questionsArray);
-const apiUrl =
+
+let apiUrl =
   "https://opentdb.com/api.php?amount=" +
   amountNum +
   "&category=18&difficulty=" +
-  difficultySel;
+  difficultySel.toLowerCase();
+
+function updateApiUrl() {
+  apiUrl =
+    "https://opentdb.com/api.php?amount=" +
+    amountNum +
+    "&category=18&difficulty=" +
+    difficultySel.toLowerCase();
+}
 // commento//
 async function fetchQuestions() {
   const response = await fetch(apiUrl);
@@ -204,12 +228,14 @@ const displayQuestion = (index) => {
     currentQuest.correct_answer
   );
 
+  const shuffledQuestions = shuffleArray(answers);
+
   const answerDiv = document.createElement("div");
   answerDiv.classList.add("question-container");
   mainContainer.appendChild(answerDiv);
 
   //per ogni elemento nell'array di risposte, ciclo
-  answers.forEach((answer) => {
+  shuffledQuestions.forEach((answer) => {
     const questionButton = document.createElement("button");
     questionButton.classList.add("questionBtn");
     questionButton.innerText = answer;
@@ -261,7 +287,8 @@ const displayQuestion = (index) => {
   questionNumber.innerText = currentQuestionIndex + 1;
 };
 
-const redirectToResultPage = () => (window.location.href = "results.html");
+const redirectToResultPage = () =>
+  (window.location.href = `results.html?a=${correctAnswers.length}&b=${amountNum}`); // baretto passaggio risposte corrette + totale domande
 
 //todo1: aggiornare il question alla fine della pagina
 //todo2 aggiungere un bottone alla fine della pagina per mandare avanti, le
@@ -269,22 +296,21 @@ const redirectToResultPage = () => (window.location.href = "results.html");
 
 //todo3: collegare lo score con il results.js
 
-// const shuffleArray = (array) => {
-//   for (let i = array.length - 1; i > 0; i--) {
-//     const j = Math.floor(Math.random() * (i + 1));
-//     [array[i], array[j]] = [array[j], array[i]];
-//   }
-//   return array;
-// };
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
 
-// // Shuffle the questions array
-// const shuffledQuestions = shuffleArray(questionsArray);
+// Shuffle the questions array
 
 // setTimeout(console.log(shuffledQuestions), 5000);
 
 // Function to start the timer
 function startTimer() {
-  let progressStartValue = 5;
+  let progressStartValue = 10;
   let progressEndValue = 0;
   let degreesPerUnit = 360 / (progressStartValue - progressEndValue);
 

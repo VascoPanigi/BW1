@@ -33,13 +33,13 @@
         </p>
         <div>
           <p class="text_1">Select the level of the questions</p>
-          <select>
+          <select id="selectDifficulty">
             <option>Easy</option>
             <option>Medium</option>
             <option>Hard</option>
           </select>
           <p class="text_1">Select the number of questions</p>
-          <select>
+          <select id="selectAmount">
             <option>10</option>
             <option>20</option>
             <option>30</option>
@@ -72,7 +72,7 @@
     <footer>
       <h4 id="questionNumH4" class="question-number invisible">
         QUESTION <span id="questionNumber"> </span>
-        <span class="span">/10</span>
+        <span class="span" id="totNumAns">/10</span>
       </h4>
     </footer>
     <script src="/quiz.js"></script>
