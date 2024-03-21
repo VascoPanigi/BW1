@@ -344,3 +344,28 @@ const goToNextQuestion = () => {
     redirectToResultPage();
   }
 };
+
+questionsArray.forEach((question) => {
+  const questionText = question.question;
+  const correctAnswer = question.correct_answer;
+  const incorrectAnswers = question.incorrect_answers;
+
+  const ulOfQuestion = document.createElement("ul");
+
+  const liQuestion = document.createElement("li");
+  liQuestion.innerText = questionText;
+  ulOfQuestion.appendChild(liQuestion);
+
+  const liCorrectAnswer = document.createElement("li");
+  liCorrectAnswer.innerText = correctAnswer;
+  ulOfQuestion.appendChild(liCorrectAnswer);
+
+  const liIncorrectAnswer = document.createElement("li");
+  liIncorrectAnswer.innerText = incorrectAnswers;
+  ulOfQuestion.appendChild(liIncorrectAnswer);
+
+  document.body.appendChild(ulOfQuestion);
+  console.log("Domanda:", questionText);
+  console.log("Risposta Corretta:", correctAnswer);
+  console.log("Risposte Sbagliate:", incorrectAnswers);
+});
