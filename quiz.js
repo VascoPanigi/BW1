@@ -1,114 +1,3 @@
-/*const btn = document.getElementsByTagName("optgroup");
-btn.addEventListener("click", () => { 
-    btn.forEach(button => {
-       btn.style.backgroundColor = "#9ffcfc";
-    } )  
-   });*/
-
-/* const btn = document.getElementsById("startBtn");
-  btn.addEventListener("click", () => { 
-          btn.style.backgroundColor = "#9ffcfc";
-      });*/
-
-const questions = [
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "What does CPU stand for?",
-    correct_answer: "Central Processing Unit",
-    incorrect_answers: [
-      "Central Process Unit",
-      "Computer Personal Unit",
-      "Central Processor Unit",
-    ],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question:
-      "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
-    correct_answer: "Final",
-    incorrect_answers: ["Static", "Private", "Public"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "How can i create a checkbox in HTML?",
-    correct_answer: '&lt;input type="checkbox"&gt;',
-    incorrect_answers: [
-      '&lt;input type="check"&gt;',
-      "&lt;checkbox&gt;",
-      '&lt;input type="button"&gt;',
-    ],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "What amount of bits commonly equals one byte",
-    correct_answer: "8",
-    incorrect_answers: ["1", "2", "64"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question:
-      "What is the most preferred image format used for logos in the Wikimedia database?",
-    correct_answer: ".svg",
-    incorrect_answers: [".png", ".jpeg", ".gif"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "In web design, what does CSS stand for?",
-    correct_answer: "Cascading Style Sheet",
-    incorrect_answers: [
-      "Counter Strike: Source",
-      "Corrective Style Sheet",
-      "Computer Style Sheet",
-    ],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question:
-      "What is the code name for the mobile operating system Android 7.0?",
-    correct_answer: "Nougat",
-    incorrect_answers: ["Ice Cream Sandwich", "Jelly Bean", "Marshmallow"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "On Twitter, what is the character limit for a Tweet?",
-    correct_answer: "140",
-    incorrect_answers: ["120", "160", "100"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "How long is anIPv6 address?",
-    correct_answer: "128",
-    incorrect_answers: ["8", "32", "64"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question:
-      "Which programming language shares its name with an island in Indonesia?",
-    correct_answer: "Java",
-    incorrect_answers: ["Python", "C", "Jakarta"],
-  },
-];
-
 const selectionInput = document.querySelectorAll(".selectButtonLv");
 
 const inputDifficulty = document.getElementById("selectDifficulty");
@@ -170,7 +59,11 @@ const questionNumberHeader = document.querySelector(
   "footer h4.question-number"
 );
 const mainContainer = document.querySelector("main");
-const correctAnswers = [];
+let correctAnswers = [];
+let wrongAnswers = [];
+// let allAnswers = currentQuest.incorrect_answers.concat(
+//   currentQuest.correct_answer
+// );
 const totalScore = questionsArray.length;
 let currentQuestionIndex = 0;
 const circularProgress = document.querySelector(".circular-progress");
@@ -178,6 +71,9 @@ const progressValue = document.querySelector(".progress-value");
 const clockContainer = document.getElementById("clock-container");
 const speed = 1000;
 let progress;
+
+console.log(correctAnswers);
+console.log(wrongAnswers);
 
 // startButton.addEventListener("click", () => {
 //   clearPage();
@@ -248,10 +144,15 @@ const displayQuestion = (index) => {
       allButtons.forEach((btn) => btn.classList.remove("clickedBtn"));
       questionButton.classList.add("clickedBtn");
       if (answer === currentQuest.correct_answer) {
-        correctAnswers.push(currentQuest.correct_answer);
-        console.log("Correct!");
+        if (!correctAnswers.includes(currentQuest.correct_answer)) {
+          correctAnswers.push(currentQuest.correct_answer);
+          console.log("Correct!");
+        }
       } else {
-        console.log("Incorrect!");
+        if (!wrongAnswers.includes(answer)) {
+          wrongAnswers.push(answer);
+          console.log("Incorrect!");
+        }
       }
 
       //ora ogni volta che io clicco una risposta si passa alla prossima
@@ -288,8 +189,8 @@ const displayQuestion = (index) => {
   questionNumber.innerText = currentQuestionIndex + 1;
 };
 
-const redirectToResultPage = () =>
-  (window.location.href = `results.html?a=${correctAnswers.length}&b=${amountNum}`); // baretto passaggio risposte corrette + totale domande
+// const redirectToResultPage = () =>
+//   (window.location.href = `results.html?a=${correctAnswers.length}&b=${amountNum}`); // baretto passaggio risposte corrette + totale domande
 
 //todo1: aggiornare il question alla fine della pagina
 //todo2 aggiungere un bottone alla fine della pagina per mandare avanti, le
@@ -370,18 +271,50 @@ const goToNextQuestion = () => {
 //   console.log("Risposte Sbagliate:", incorrectAnswers);
 // });
 
-// const answerRecapDiv = document.createElement("div");
-// answerRecapDiv.classList.add("answer-recap-container");
-//   mainContainer.appendChild(answerRecapDiv);
+const createRecap = () => {
+  const currentQuest = questionsArray[index];
 
-//   const answeRecapUl = document.createElement("ul");
-//   answeRecapUl.classList.add("answer-recap-ul");
-//   answerRecapDiv.appendChild(answeRecapUl);
+  const answerRecapDiv = document.createElement("div");
+  answerRecapDiv.classList.add("answer-recap-container");
+  mainContainer.appendChild(answerRecapDiv);
 
-//   answers.forEach((answer) => {
-//     const answerRecapUl = document.createElement("li");
-//     answerRecapUl.classList.add("answer-recap-li");
-//     answerRecapUl.innerText = answer;
-//     answerRecapDiv.appendChild(answerRecapUl)
+  const answerRecapH3 = document.createElement("h3");
+  answerRecapH3.classList.add("answer-recap-title");
+  answerRecapH3.innerText = currentQuest.question;
+  answerRecapDiv.appendChild(answerRecapH3);
 
-//   })
+  const answerRecapAllQuestions = document.createElement("div");
+  answerRecapAllQuestions.classList.add("answer-recap-container-questions");
+  mainContainer.appendChild(answerRecapAllQuestions);
+
+  const answeRecapUl = document.createElement("ul");
+  answeRecapUl.classList.add("answer-recap-ul");
+  answerRecapAllQuestions.appendChild(answeRecapUl);
+
+  answers.forEach((answer) => {
+    const answerRecapUl = document.createElement("li");
+    answerRecapUl.classList.add("answer-recap-li");
+    answerRecapUl.innerText = answer;
+    answerRecapDiv.appendChild(answerRecapUl);
+
+    if (questionsArray.correct_answer === answer) {
+      answer.classList.add("correct-answer");
+    }
+    if (wrongAnswers.includes(answer)) {
+      answer.classList.add("wrong-answer");
+    }
+  });
+};
+
+//^^^^^^quando le domande sono finite, si deve inizializzare questa funzione^^^^^^^^
+
+//array con risposta corretta originale V
+//array con risposte corrette
+//array con risposte sbagliate
+
+//noi stiamo ciclando
+
+// DEFAULT -> TUTTE le risposte corrette originali sono in verde
+// SE nell'array in cui abbiamo pushato tutte le risposte
+//corrette troviamo una risposta === a quella corrente del forEach -> non facciamo niente
+//se invece lo trova ma nell-altro array, cambia la classe in rosso
