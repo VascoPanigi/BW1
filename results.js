@@ -33,11 +33,11 @@ if (percentuale <= 40) {
   messH3.innerHTML = "Congratulations!";
   messH5.innerHTML = "You passed the exam.";
   messP.innerHTML =
-    " We'll send you the certificate in few minutes. Check your emai";
+    "We'll send you the certificate in few minutes. Check your email (including promotions / spam folder)";
 } else {
   messH3.innerHTML = "We're sorry...";
-  messH5.innerHTML = "You didn't pass the exam";
-  messP.innerHTML = "we have sent you an email to repeat the exam"; // Cambio del messaggio nel cerchio in base al fatto che hai superat ono l'esame baretto
+  messH5.innerHTML = "You didn't pass the exam.";
+  messP.innerHTML = "Please conctact us if you want to take the test again!"; // Cambio del messaggio nel cerchio in base al fatto che hai superat ono l'esame baretto
 }
 // commento
 const labels1 = ["right", "wrong"];

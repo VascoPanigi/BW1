@@ -35,6 +35,13 @@ ul {
   font-size: 14px;
 }
 
+.h6 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #d20094;
+  margin-left: 2em;
+}
+
 #button {
   font-family: "Outfit", sans-serif;
   margin: 0;
@@ -42,6 +49,16 @@ ul {
   padding-bottom: 0.2em;
   padding-left: 2.5em;
   padding-right: 2.5em;
+  background-color: rgb(145, 145, 145);
+  color: rgb(66, 66, 66);
+}
+
+button:hover {
+  box-shadow: none;
+}
+
+.glow:hover {
+  box-shadow: -1px 1px 40px -1px rgba(0, 255, 255, 0.86);
 }
 
 #flex {
@@ -100,7 +117,7 @@ ul {
   margin-top: 5px;
 }
 .checkbox-wrapper-28 svg {
-  stroke: #26cf34;
+  stroke: #d20094;
   stroke-width: 5px;
   height: 0;
   width: calc(var(--size) * 0.6);
