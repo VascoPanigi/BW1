@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const buttonStars = document.querySelectorAll(".starsClass");
     const allStars = [];
     const allStarsWithFeedback = [];
-        
+    const lucine = document.getElementsByClassName("space")   
     buttonStars.forEach(star => {
         allStars.push(star);
             
@@ -19,10 +19,18 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             console.log(allStarsWithFeedback); 
         };
+
     });
-     
+    lucine.forEach ( stella => { 
+       stella.onmouseover = event => {
+        for (let i = 0; i <= lucine.indexOf(stella); i++) {
+            stella.classList.add("glow")
+            
+        }};
+ })
+
     console.log(buttonStars)
-   
+
     const buttonSendRe = document.getElementById("sendButtonId");
     const containerStars = document.getElementsByClassName("mainBody")[0]; 
     const containerTextFeedBack = document.getElementById("comment")
@@ -78,3 +86,5 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 });
+
+
