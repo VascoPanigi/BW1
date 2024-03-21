@@ -229,12 +229,14 @@ const displayQuestion = (index) => {
     currentQuest.correct_answer
   );
 
+  const shuffledQuestions = shuffleArray(answers);
+
   const answerDiv = document.createElement("div");
   answerDiv.classList.add("question-container");
   mainContainer.appendChild(answerDiv);
 
   //per ogni elemento nell'array di risposte, ciclo
-  answers.forEach((answer) => {
+  shuffledQuestions.forEach((answer) => {
     const questionButton = document.createElement("button");
     questionButton.classList.add("questionBtn");
     questionButton.innerText = answer;
@@ -295,23 +297,22 @@ const redirectToResultPage = () =>
 
 //todo3: collegare lo score con il results.js
 
-// const shuffleArray = (array) => {
-//   for (let i = array.length - 1; i > 0; i--) {
-//     const j = Math.floor(Math.random() * (i + 1));
-//     [array[i], array[j]] = [array[j], array[i]];
-//   }
-//   return array;
-// };
+const shuffleArray = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
 
-// // Shuffle the questions array
-// const shuffledQuestions = shuffleArray(questionsArray);
+// Shuffle the questions array
 
 // setTimeout(console.log(shuffledQuestions), 5000);
 
 // Function to start the timer
 function startTimer() {
-  let progressStartValue = 60; // Initial value of timer
-  let progressEndValue = 0; // End value of timer
+  let progressStartValue = 10;
+  let progressEndValue = 0;
   let degreesPerUnit = 360 / (progressStartValue - progressEndValue);
 
   progress = setInterval(() => {
@@ -325,22 +326,21 @@ function startTimer() {
 
     if (progressStartValue == progressEndValue) {
       clearInterval(progress);
-      goToNextQuestion(); // Call function to go to next question
+      goToNextQuestion();
     }
   }, speed);
 }
 
-// Function to go to the next question
-function goToNextQuestion() {
+const goToNextQuestion = () => {
   clearInterval(progress);
   let nextIndex = currentQuestionIndex + 1;
   if (nextIndex < questionsArray.length) {
     clearPage();
     currentQuestionIndex = nextIndex;
     displayQuestion(currentQuestionIndex);
-    //startTimer(); // Start the timer for the next question
+    startTimer();
   } else {
     console.log("End of questions.");
     redirectToResultPage();
   }
-}
+};
