@@ -283,10 +283,10 @@ const redirectToResultPage = () => (window.location.href = "results.html");
 // setTimeout(console.log(shuffledQuestions), 5000);
 
 // Function to start the timer
-const startTimer = () => {
-  const progressStartValue = 5;
-  const progressEndValue = 0;
-  const degreesPerUnit = 360 / (progressStartValue - progressEndValue);
+function startTimer() {
+  let progressStartValue = 5;
+  let progressEndValue = 0;
+  let degreesPerUnit = 360 / (progressStartValue - progressEndValue);
 
   progress = setInterval(() => {
     progressStartValue--;
@@ -302,7 +302,7 @@ const startTimer = () => {
       goToNextQuestion();
     }
   }, speed);
-};
+}
 
 const goToNextQuestion = () => {
   clearInterval(progress);
