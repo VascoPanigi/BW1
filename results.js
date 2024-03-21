@@ -22,14 +22,14 @@ function calcolaPercentuale(totaledomande, rispostsbagliate) {
 
 let percentuale = calcolaPercentuale(totaledomande, rispostsbagliate);
 
-scorenegativo.innerHTML = "%" + percentuale;
-scorepositivo.innerHTML = "%" + (100 - percentuale); // Calcolo della percentuale positiva baretto
+scorenegativo.innerHTML = percentuale + "%";
+scorepositivo.innerHTML = 100 - percentuale + "%"; // Calcolo della percentuale positiva baretto
 
 let messH3 = document.getElementById("messageResH3");
 let messH5 = document.getElementById("messageResH5");
 let messP = document.getElementById("messageResP");
 
-if (percentuale <= 60) {
+if (percentuale <= 40) {
   messH3.innerHTML = "Congratulations!";
   messH5.innerHTML = "You passed the exam.";
   messP.innerHTML =
