@@ -10,3 +10,5 @@ btn.addEventListener("click", () => {
     window.location.href = "quiz.html";
   }
 });
+
+// commneto//
