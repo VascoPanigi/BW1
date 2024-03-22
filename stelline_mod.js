@@ -21,13 +21,13 @@ document.addEventListener("DOMContentLoaded", function() {
         };
 
     });
-    lucine.forEach ( stella => { 
+   /* lucine.forEach ( stella => { 
        stella.onmouseover = event => {
         for (let i = 0; i <= lucine.indexOf(stella); i++) {
             stella.classList.add("glow")
             
         }};
- })
+ })*/
 
     console.log(buttonStars)
 
