@@ -385,3 +385,4 @@ const goToNextQuestion = () => {
 //     answerRecapDiv.appendChild(answerRecapUl)
 
 //   })
+/* questo è un messaggio di prova*/
