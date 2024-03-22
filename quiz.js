@@ -209,10 +209,11 @@ const shuffleArray = (array) => {
 // Shuffle the questions array
 
 // setTimeout(console.log(shuffledQuestions), 5000);
-
+// setTimeout(startTimer, 1000);
 // Function to start the timer
-function startTimer() {
-  let progressStartValue = 10;
+
+const startTimer = () => {
+  let progressStartValue = 60;
   let progressEndValue = 0;
   let degreesPerUnit = 360 / (progressStartValue - progressEndValue);
 
@@ -230,7 +231,7 @@ function startTimer() {
       goToNextQuestion();
     }
   }, speed);
-}
+};
 
 const goToNextQuestion = () => {
   clearInterval(progress);
