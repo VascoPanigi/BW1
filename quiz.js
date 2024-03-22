@@ -246,7 +246,7 @@ const goToNextQuestion = () => {
     startTimer();
   } else {
     console.log("End of questions.");
-    redirectToResultPage();
+    //redirectToResultPage();
   }
 };
 
