@@ -23,54 +23,95 @@
         </div>
       </div>
     </header>
-    <div id="doughnut-container" class="invisible">
-      <section>
-        <h1>Results</h1>
-        <h3>The summary of your answers:</h3>
-      </section>
-      <div class="container">
-        <div class="score-container">
-          <h2>Correct</h2>
-          <!-- QUESTO DIV SCORE DOVRA' SCOMPARIRE E DIVENTARE 
+    <div class="all-container">
+      <div id="doughnut-container" class="invisible">
+        <section>
+          <h1>Results</h1>
+          <h3>The summary of your answers:</h3>
+        </section>
+        <div class="container">
+          <div class="score-container">
+            <h2>Correct</h2>
+            <!-- QUESTO DIV SCORE DOVRA' SCOMPARIRE E DIVENTARE 
         RESPONSIVE CON JS -->
-          <h2 id="positiveScore">62.5%</h2>
-          <p class="fontFix"></p>
-        </div>
-        <div class="chart-container">
-          <canvas class="my-chart"> </canvas>
-          <div class="donut-inner">
-            <h3 id="messageResH3">Congratulations!</h3>
-            <h5 id="messageResH5">You passed the exam.</h5>
-            <p id="messageResP">
-              We'll send you the certificate in few minutes. Check your email
-              (including promotions / spam folder)
-            </p>
+            <h2 id="positiveScore">62.5%</h2>
+            <p class="fontFix"></p>
+          </div>
+          <div class="chart-container">
+            <canvas class="my-chart"> </canvas>
+            <div class="donut-inner">
+              <h3 id="messageResH3">Congratulations!</h3>
+              <h5 id="messageResH5">You passed the exam.</h5>
+              <p id="messageResP">
+                We'll send you the certificate in few minutes. Check your email
+                (including promotions / spam folder)
+              </p>
+            </div>
+          </div>
+          <div class="score-container fix">
+            <h2>Wrong</h2>
+            <h2 id="negativeScore">27.5%</h2>
+            <p class="fontFix2"></p>
           </div>
         </div>
-        <div class="score-container fix">
-          <h2>Wrong</h2>
-          <h2 id="negativeScore">27.5%</h2>
-          <p class="fontFix2"></p>
+        <div class="button-container">
+          <button id="rating-btn">RATE US</button>
         </div>
       </div>
-      <div class="button-container">
-        <button id="rating-btn">RATE US</button>
+      <main>
+        <div id="options">
+          <h2 class="bold">Before you start:</h2>
+          <p id="text">
+            Please remember to choose the
+            <span class="bold">questions difficulty</span> and the
+            <span class="bold">number of questions</span> you want in your quiz.
+          </p>
+          <div>
+            <p class="text_1">Select the level of the questions</p>
+            <select id="selectDifficulty">
+              <option>Easy</option>
+              <option>Medium</option>
+              <option>Hard</option>
+            </select>
+            <p class="text_1">Select the number of questions</p>
+            <select id="selectAmount">
+              <option>10</option>
+              <option>20</option>
+              <option>30</option>
+            </select>
+          </div>
+        </div>
+        <div id="flex">
+          <div class="align">
+            <h3 class="bold">Good luck!</h3>
+          </div>
+          <div class="startBtn-container">
+            <button id="startBtn">START</button>
+          </div>
+        </div>
+        <!-- <section class="question-title-container">
+        <h1 class="question-title">How can I create a checkbox in HTML?</h1>
+      </section>
+
+      <div class="question-container">
+        <button class="questionBtn">ciao sono una risposta</button>
+        <button class="questionBtn clickedBtn">ciao sono una risposta</button>
+        <button class="questionBtn">ciao sono una risposta</button>
+        <button class="questionBtn">ciao sono una risposta </button>
       </div>
+
+      <div class="next-question-container">
+        <button class="next-question-button">Next</button>
+      </div> -->
+      </main>
     </div>
-    <main>
-      <div class="recap-main-container">
-        <div class="answer-recap-container">
-          <h3 class="answer-recap-title">ciao come stai</h3>
-        </div>
-        <div class="answer-recap-container-questions">
-          <ul class="answer-recap-ul">
-            <li class="answer-recap-li correct-answer">bene</li>
-            <li class="answer-recap-li wrong-answer">benino</li>
-            <li class="answer-recap-li">benissimo</li>
-          </ul>
-        </div>
-      </div>
-    </main>
-    <footer></footer>
+    <footer>
+      <h4 id="questionNumH4" class="question-number invisible">
+        QUESTION <span id="questionNumber"> </span>
+        <span class="span" id="totNumAns">/10</span>
+      </h4>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/quiz.js"></script>
   </body>
 </html>

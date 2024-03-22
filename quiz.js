@@ -93,7 +93,7 @@ startButton.addEventListener("click", async () => {
 });
 
 const clearPage = () => {
-  mainContainer.innerHTML = "";
+  mainContainer.innerText = "";
 };
 
 const displayQuestion = (index) => {
@@ -184,6 +184,7 @@ const displayQuestion = (index) => {
       console.log("End of questions.");
       //redirectToResultPage();
       clearPage();
+      questionNumberHeader.classList.add("invisible");
       showDoughnut();
       createRecap();
     }
@@ -192,8 +193,8 @@ const displayQuestion = (index) => {
   questionNumber.innerText = currentQuestionIndex + 1;
 };
 
-const redirectToResultPage = () =>
-  (window.location.href = `results.html?a=${correctAnswers.length}&b=${amountNum}`); // baretto passaggio risposte corrette + totale domande
+// const redirectToResultPage = () =>
+//   (window.location.href = `results.html?a=${correctAnswers.length}&b=${amountNum}`); // baretto passaggio risposte corrette + totale domande
 
 //todo1: aggiornare il question alla fine della pagina
 //todo2 aggiungere un bottone alla fine della pagina per mandare avanti, le
@@ -246,7 +247,7 @@ const goToNextQuestion = () => {
     startTimer();
   } else {
     console.log("End of questions.");
-    redirectToResultPage();
+    // redirectToResultPage();
   }
 };
 
@@ -276,41 +277,46 @@ const goToNextQuestion = () => {
 // });
 
 const createRecap = () => {
-  const currentQuest = questionsArray[index];
+  clearPage();
 
   const recapMainDiv = document.createElement("div");
-  answerRecapDiv.classList.add("recap-main-container");
+  recapMainDiv.classList.add("recap-main-container");
   mainContainer.appendChild(recapMainDiv);
 
-  const answerRecapDiv = document.createElement("div");
-  answerRecapDiv.classList.add("answer-recap-container");
-  recapMainDiv.appendChild(answerRecapDiv);
+  questionsArray.forEach((question, index) => {
+    const {
+      question: questionText,
+      correct_answer,
+      incorrect_answers,
+    } = question;
 
-  const answerRecapH3 = document.createElement("h3");
-  answerRecapH3.classList.add("answer-recap-title");
-  answerRecapH3.innerText = currentQuest.question;
-  answerRecapDiv.appendChild(answerRecapH3);
+    const questionContainer = document.createElement("div");
+    questionContainer.classList.add("question-recap-container");
+    recapMainDiv.appendChild(questionContainer);
 
-  const answerRecapAllQuestions = document.createElement("div");
-  answerRecapAllQuestions.classList.add("answer-recap-container-questions");
-  recapMainDiv.appendChild(answerRecapAllQuestions);
+    const questionHeading = document.createElement("h3");
+    questionHeading.classList.add("question-heading");
+    questionHeading.textContent = `${index + 1}. ${questionText}`;
+    questionContainer.appendChild(questionHeading);
 
-  const answeRecapUl = document.createElement("ul");
-  answeRecapUl.classList.add("answer-recap-ul");
-  answerRecapAllQuestions.appendChild(answeRecapUl);
+    const answerList = document.createElement("ul");
+    answerList.classList.add("answer-list");
+    questionContainer.appendChild(answerList);
 
-  answers.forEach((answer) => {
-    const answerRecapLi = document.createElement("li");
-    answerRecapLi.classList.add("answer-recap-li");
-    answerRecapLi.innerText = answer;
-    answeRecapUl.appendChild(answerRecapLi);
+    const allAnswers = incorrect_answers.concat(correct_answer);
 
-    if (questionsArray.correct_answer === answer) {
-      answer.classList.add("correct-answer");
-    }
-    if (wrongAnswers.includes(answer)) {
-      answer.classList.add("wrong-answer");
-    }
+    allAnswers.forEach((answer) => {
+      const answerItem = document.createElement("li");
+      answerItem.textContent = answer;
+
+      if (correct_answer === answer) {
+        answerItem.classList.add("correct-answer");
+      } else if (wrongAnswers.includes(answer)) {
+        answerItem.classList.add("wrong-answer");
+      }
+
+      answerList.appendChild(answerItem);
+    });
   });
 };
 
@@ -337,11 +343,10 @@ const createRecap = () => {
 // import correct_answer from 'quiz.js'
 // import totalScore from 'quiz.js'
 
-let params = new URLSearchParams(window.location.search); // recupero parametri passati all url baretto
-let risposteCorrette = parseInt(params.get("a")); // Recupero risposte corrette parametro URL e converto in numero intero baretto
+let risposteCorrette = correctAnswers.length;
 console.log(risposteCorrette);
 
-let totaledomande = parseInt(params.get("b")); // Recupero domande totali parametro URL e converto in numero intero baretto
+let totaledomande = amountNum;
 
 let rispostsbagliate = totaledomande - risposteCorrette; // Calcolo delle risposte sbagliate baretto
 
@@ -360,11 +365,13 @@ for (let i = 0; i < questions.length; i++) {
   questions[i].innerHTML =
     risposteCorrette + "/" + totaledomande + " questions";
 }
+
 let questionWrong = document.getElementsByClassName("fontFix2");
-for (let i = 0; i < questions.length; i++) {
+for (let i = 0; i < questionWrong.length; i++) {
   questionWrong[i].innerHTML =
     rispostsbagliate + "/" + totaledomande + " questions";
 }
+
 questions.innerHTML;
 scorenegativo.innerHTML = percentuale + "%";
 scorepositivo.innerHTML = 100 - percentuale + "%"; // Calcolo della percentuale positiva baretto
@@ -409,7 +416,6 @@ const rateBtn = document.getElementById("rating-btn");
 rateBtn.addEventListener("click", () => redirectToRatingPage());
 
 const redirectToRatingPage = () => (window.location.href = "stelline_mod.html");
-/*test di prova*/
 const showDoughnut = () => {
   const div = document.getElementById("doughnut-container");
   div.classList.remove("invisible");
