@@ -299,3 +299,9 @@ li {
 .answer-recap-title {
   font-size: 2em;
 }
+.green {
+  color: #66bb6a;
+}
+.red {
+  color: #f44336;
+}

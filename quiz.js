@@ -178,7 +178,12 @@ const displayQuestion = (index) => {
     currentQuestionIndex++;
 
     if (currentQuestionIndex < questionsArray.length) {
-      clearPage();
+      if ((questionButton.innerText = currentQuest.correct_answer)) {
+        questionButton.classList.add("green");
+      } else {
+        questionButton.classList.add("red");
+      }
+      setTimeout(clearPage(), 1000);
       displayQuestion(currentQuestionIndex);
     } else {
       console.log("End of questions.");
