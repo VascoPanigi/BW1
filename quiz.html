@@ -23,6 +23,40 @@
         </div>
       </div>
     </header>
+    <div id="doughnut-container" class="invisible">
+      <section>
+        <h1>Results</h1>
+        <h3>The summary of your answers:</h3>
+      </section>
+      <div class="container">
+        <div class="score-container">
+          <h2>Correct</h2>
+          <!-- QUESTO DIV SCORE DOVRA' SCOMPARIRE E DIVENTARE 
+        RESPONSIVE CON JS -->
+          <h2 id="positiveScore">62.5%</h2>
+          <p class="fontFix"></p>
+        </div>
+        <div class="chart-container">
+          <canvas class="my-chart"> </canvas>
+          <div class="donut-inner">
+            <h3 id="messageResH3">Congratulations!</h3>
+            <h5 id="messageResH5">You passed the exam.</h5>
+            <p id="messageResP">
+              We'll send you the certificate in few minutes. Check your email
+              (including promotions / spam folder)
+            </p>
+          </div>
+        </div>
+        <div class="score-container fix">
+          <h2>Wrong</h2>
+          <h2 id="negativeScore">27.5%</h2>
+          <p class="fontFix2"></p>
+        </div>
+      </div>
+      <div class="button-container">
+        <button id="rating-btn">RATE US</button>
+      </div>
+    </div>
     <main>
       <div id="options">
         <h2 class="bold">Before you start:</h2>

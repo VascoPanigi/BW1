@@ -1,114 +1,3 @@
-/*const btn = document.getElementsByTagName("optgroup");
-btn.addEventListener("click", () => { 
-    btn.forEach(button => {
-       btn.style.backgroundColor = "#9ffcfc";
-    } )  
-   });*/
-
-/* const btn = document.getElementsById("startBtn");
-  btn.addEventListener("click", () => { 
-          btn.style.backgroundColor = "#9ffcfc";
-      });*/
-
-const questions = [
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "What does CPU stand for?",
-    correct_answer: "Central Processing Unit",
-    incorrect_answers: [
-      "Central Process Unit",
-      "Computer Personal Unit",
-      "Central Processor Unit",
-    ],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question:
-      "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
-    correct_answer: "Final",
-    incorrect_answers: ["Static", "Private", "Public"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "How can i create a checkbox in HTML?",
-    correct_answer: '&lt;input type="checkbox"&gt;',
-    incorrect_answers: [
-      '&lt;input type="check"&gt;',
-      "&lt;checkbox&gt;",
-      '&lt;input type="button"&gt;',
-    ],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "What amount of bits commonly equals one byte",
-    correct_answer: "8",
-    incorrect_answers: ["1", "2", "64"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question:
-      "What is the most preferred image format used for logos in the Wikimedia database?",
-    correct_answer: ".svg",
-    incorrect_answers: [".png", ".jpeg", ".gif"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "In web design, what does CSS stand for?",
-    correct_answer: "Cascading Style Sheet",
-    incorrect_answers: [
-      "Counter Strike: Source",
-      "Corrective Style Sheet",
-      "Computer Style Sheet",
-    ],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question:
-      "What is the code name for the mobile operating system Android 7.0?",
-    correct_answer: "Nougat",
-    incorrect_answers: ["Ice Cream Sandwich", "Jelly Bean", "Marshmallow"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "On Twitter, what is the character limit for a Tweet?",
-    correct_answer: "140",
-    incorrect_answers: ["120", "160", "100"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question: "How long is anIPv6 address?",
-    correct_answer: "128",
-    incorrect_answers: ["8", "32", "64"],
-  },
-  {
-    category: "Science: Computers",
-    type: "multiple",
-    difficulty: "easy",
-    question:
-      "Which programming language shares its name with an island in Indonesia?",
-    correct_answer: "Java",
-    incorrect_answers: ["Python", "C", "Jakarta"],
-  },
-];
-
 const selectionInput = document.querySelectorAll(".selectButtonLv");
 
 const inputDifficulty = document.getElementById("selectDifficulty");
@@ -170,7 +59,11 @@ const questionNumberHeader = document.querySelector(
   "footer h4.question-number"
 );
 const mainContainer = document.querySelector("main");
-const correctAnswers = [];
+let correctAnswers = [];
+let wrongAnswers = [];
+// let allAnswers = currentQuest.incorrect_answers.concat(
+//   currentQuest.correct_answer
+// );
 const totalScore = questionsArray.length;
 let currentQuestionIndex = 0;
 const circularProgress = document.querySelector(".circular-progress");
@@ -178,6 +71,9 @@ const progressValue = document.querySelector(".progress-value");
 const clockContainer = document.getElementById("clock-container");
 const speed = 1000;
 let progress;
+
+console.log(correctAnswers);
+console.log(wrongAnswers);
 
 // startButton.addEventListener("click", () => {
 //   clearPage();
@@ -248,10 +144,15 @@ const displayQuestion = (index) => {
       allButtons.forEach((btn) => btn.classList.remove("clickedBtn"));
       questionButton.classList.add("clickedBtn");
       if (answer === currentQuest.correct_answer) {
-        correctAnswers.push(currentQuest.correct_answer);
-        console.log("Correct!");
+        if (!correctAnswers.includes(currentQuest.correct_answer)) {
+          correctAnswers.push(currentQuest.correct_answer);
+          console.log("Correct!");
+        }
       } else {
-        console.log("Incorrect!");
+        if (!wrongAnswers.includes(answer)) {
+          wrongAnswers.push(answer);
+          console.log("Incorrect!");
+        }
       }
 
       //ora ogni volta che io clicco una risposta si passa alla prossima
@@ -281,15 +182,18 @@ const displayQuestion = (index) => {
       displayQuestion(currentQuestionIndex);
     } else {
       console.log("End of questions.");
-      redirectToResultPage();
+      //redirectToResultPage();
+      clearPage();
+      showDoughnut();
+      createRecap();
     }
   });
   nextQuestDiv.appendChild(nextQuestBtn);
   questionNumber.innerText = currentQuestionIndex + 1;
 };
 
-const redirectToResultPage = () =>
-  (window.location.href = `results.html?a=${correctAnswers.length}&b=${amountNum}`); // baretto passaggio risposte corrette + totale domande
+// const redirectToResultPage = () =>
+//   (window.location.href = `results.html?a=${correctAnswers.length}&b=${amountNum}`); // baretto passaggio risposte corrette + totale domande
 
 //todo1: aggiornare il question alla fine della pagina
 //todo2 aggiungere un bottone alla fine della pagina per mandare avanti, le
@@ -308,10 +212,11 @@ const shuffleArray = (array) => {
 // Shuffle the questions array
 
 // setTimeout(console.log(shuffledQuestions), 5000);
-
+// setTimeout(startTimer, 1000);
 // Function to start the timer
-function startTimer() {
-  let progressStartValue = 10;
+
+const startTimer = () => {
+  let progressStartValue = 60;
   let progressEndValue = 0;
   let degreesPerUnit = 360 / (progressStartValue - progressEndValue);
 
@@ -329,7 +234,7 @@ function startTimer() {
       goToNextQuestion();
     }
   }, speed);
-}
+};
 
 const goToNextQuestion = () => {
   clearInterval(progress);
@@ -370,18 +275,138 @@ const goToNextQuestion = () => {
 //   console.log("Risposte Sbagliate:", incorrectAnswers);
 // });
 
-// const answerRecapDiv = document.createElement("div");
-// answerRecapDiv.classList.add("answer-recap-container");
-//   mainContainer.appendChild(answerRecapDiv);
+const createRecap = () => {
+  const currentQuest = questionsArray[index];
 
-//   const answeRecapUl = document.createElement("ul");
-//   answeRecapUl.classList.add("answer-recap-ul");
-//   answerRecapDiv.appendChild(answeRecapUl);
+  const answerRecapDiv = document.createElement("div");
+  answerRecapDiv.classList.add("answer-recap-container");
+  mainContainer.appendChild(answerRecapDiv);
 
-//   answers.forEach((answer) => {
-//     const answerRecapUl = document.createElement("li");
-//     answerRecapUl.classList.add("answer-recap-li");
-//     answerRecapUl.innerText = answer;
-//     answerRecapDiv.appendChild(answerRecapUl)
+  const answerRecapH3 = document.createElement("h3");
+  answerRecapH3.classList.add("answer-recap-title");
+  answerRecapH3.innerText = currentQuest.question;
+  answerRecapDiv.appendChild(answerRecapH3);
 
-//   })
+  const answerRecapAllQuestions = document.createElement("div");
+  answerRecapAllQuestions.classList.add("answer-recap-container-questions");
+  mainContainer.appendChild(answerRecapAllQuestions);
+
+  const answeRecapUl = document.createElement("ul");
+  answeRecapUl.classList.add("answer-recap-ul");
+  answerRecapAllQuestions.appendChild(answeRecapUl);
+
+  answers.forEach((answer) => {
+    const answerRecapLi = document.createElement("li");
+    answerRecapLi.classList.add("answer-recap-li");
+    answerRecapLi.innerText = answer;
+    answeRecapUl.appendChild(answerRecapLi);
+
+    if (questionsArray.correct_answer === answer) {
+      answer.classList.add("correct-answer");
+    }
+    if (wrongAnswers.includes(answer)) {
+      answer.classList.add("wrong-answer");
+    }
+  });
+};
+
+//^^^^^^quando le domande sono finite, si deve inizializzare questa funzione^^^^^^^^
+
+//array con risposta corretta originale V
+//array con risposte corrette
+//array con risposte sbagliate
+
+//noi stiamo ciclando
+
+// DEFAULT -> TUTTE le risposte corrette originali sono in verde
+// SE nell'array in cui abbiamo pushato tutte le risposte
+//corrette troviamo una risposta === a quella corrente del forEach -> non facciamo niente
+//se invece lo trova ma nell-altro array, cambia la classe in rosso
+//ciao sono un commento
+
+//INIZIO RESULT
+
+// l/obiettivo è quello di creare due arrayç uno per le risposte giuste
+//e uno per le risposte sbagliate. nei data di chartData
+//poi prenderò le length dei due arrai come dati
+
+// import correct_answer from 'quiz.js'
+// import totalScore from 'quiz.js'
+
+let params = new URLSearchParams(window.location.search); // recupero parametri passati all url baretto
+let risposteCorrette = parseInt(params.get("a")); // Recupero risposte corrette parametro URL e converto in numero intero baretto
+console.log(risposteCorrette);
+
+let totaledomande = parseInt(params.get("b")); // Recupero domande totali parametro URL e converto in numero intero baretto
+
+let rispostsbagliate = totaledomande - risposteCorrette; // Calcolo delle risposte sbagliate baretto
+
+let scorepositivo = document.querySelector("#positiveScore");
+let scorenegativo = document.querySelector("#negativeScore");
+
+function calcolaPercentuale(totaledomande, rispostsbagliate) {
+  return (rispostsbagliate / totaledomande) * 100;
+}
+
+let percentuale = Math.round(
+  calcolaPercentuale(totaledomande, rispostsbagliate)
+);
+let questions = document.getElementsByClassName("fontFix");
+for (let i = 0; i < questions.length; i++) {
+  questions[i].innerHTML =
+    risposteCorrette + "/" + totaledomande + " questions";
+}
+let questionWrong = document.getElementsByClassName("fontFix2");
+for (let i = 0; i < questions.length; i++) {
+  questionWrong[i].innerHTML =
+    rispostsbagliate + "/" + totaledomande + " questions";
+}
+questions.innerHTML;
+scorenegativo.innerHTML = percentuale + "%";
+scorepositivo.innerHTML = 100 - percentuale + "%"; // Calcolo della percentuale positiva baretto
+
+let messH3 = document.getElementById("messageResH3");
+let messH5 = document.getElementById("messageResH5");
+let messP = document.getElementById("messageResP");
+
+if (percentuale <= 40) {
+  messH3.innerHTML = "Congratulations!";
+  messH5.innerHTML = "You passed the exam.";
+  messP.innerHTML =
+    "We'll send you the certificate in few minutes. Check your email (including promotions / spam folder)";
+} else {
+  messH3.innerHTML = "We're sorry...";
+  messH5.innerHTML = "You didn't pass the exam.";
+  messP.innerHTML = "Please conctact us if you want to take the test again!"; // Cambio del messaggio nel cerchio in base al fatto che hai superat ono l'esame baretto
+}
+// commento
+const labels1 = ["right", "wrong"];
+let data1 = [risposteCorrette, rispostsbagliate];
+const colors1 = ["#00FFFF", "#D20094"];
+
+const myChart = document.querySelector(".my-chart");
+
+let chart = new Chart(myChart, {
+  type: "doughnut",
+  data: {
+    datasets: [
+      {
+        backgroundColor: colors1,
+        data: data1,
+        borderWidth: 0,
+        cutout: 135,
+      },
+    ],
+  },
+});
+
+const rateBtn = document.getElementById("rating-btn");
+
+rateBtn.addEventListener("click", () => redirectToRatingPage());
+
+const redirectToRatingPage = () => (window.location.href = "stelline_mod.html");
+/*test di prova*/
+const showDoughnut = () => {
+  const div = document.getElementById("doughnut-container");
+  div.classList.remove("invisible");
+};
