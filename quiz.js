@@ -337,27 +337,38 @@ const createRecap = () => {
 // import correct_answer from 'quiz.js'
 // import totalScore from 'quiz.js'
 
-correctAnswers = [];
-wrongAnswers = [];
-// amountNum = [] ho sopra il valore delle domande selezionate
+// const redirectToResultPage = () =>
+//   (window.location.href = `results.html?a=${correctAnswers.length}&b=${amountNum}`); // baretto passaggio risposte corrette + totale domande
+
+let risposteCorrette = correctAnswers.length;
+console.log(risposteCorrette);
+
+let totaledomande = amountNum;
+
+let rispostsbagliate = totaledomande - risposteCorrette; // Calcolo delle risposte sbagliate baretto
 
 let scorepositivo = document.querySelector("#positiveScore");
 let scorenegativo = document.querySelector("#negativeScore");
 
-function calcolaPercentuale(amountNum, wrongAnswers) {
-  return (wrongAnswers / amountNum) * 100;
+function calcolaPercentuale(totaledomande, rispostsbagliate) {
+  return (rispostsbagliate / totaledomande) * 100;
 }
 
-let percentuale = Math.round(calcolaPercentuale(amountNum, wrongAnswers));
-
+let percentuale = Math.round(
+  calcolaPercentuale(totaledomande, rispostsbagliate)
+);
 let questions = document.getElementsByClassName("fontFix");
 for (let i = 0; i < questions.length; i++) {
-  questions[i].innerHTML = correctAnswers + "/" + amountNum + " questions";
+  questions[i].innerHTML =
+    risposteCorrette + "/" + totaledomande + " questions";
 }
+
 let questionWrong = document.getElementsByClassName("fontFix2");
-for (let i = 0; i < questions.length; i++) {
-  questionWrong[i].innerHTML = wrongAnswers + "/" + amountNum + " questions";
+for (let i = 0; i < questionWrong.length; i++) {
+  questionWrong[i].innerHTML =
+    rispostsbagliate + "/" + totaledomande + " questions";
 }
+
 questions.innerHTML;
 scorenegativo.innerHTML = percentuale + "%";
 scorepositivo.innerHTML = 100 - percentuale + "%"; // Calcolo della percentuale positiva baretto
@@ -378,7 +389,7 @@ if (percentuale <= 40) {
 }
 // commento
 const labels1 = ["right", "wrong"];
-let data1 = [correctAnswers, wrongAnswers];
+let data1 = [risposteCorrette, rispostsbagliate];
 const colors1 = ["#00FFFF", "#D20094"];
 
 const myChart = document.querySelector(".my-chart");
