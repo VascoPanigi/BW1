@@ -127,10 +127,7 @@ form h2 {
   padding-bottom: 0.5em;
 }
 
-/*.glow {
-  filter: drop-shadow(-5px 5px 20px #00ffff);
-}*/
-.glow:hover {
+.glow {
   filter: drop-shadow(-5px 5px 20px #00ffff);
 }
 
