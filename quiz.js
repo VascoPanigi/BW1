@@ -278,9 +278,13 @@ const goToNextQuestion = () => {
 const createRecap = () => {
   const currentQuest = questionsArray[index];
 
+  const recapMainDiv = document.createElement("div");
+  answerRecapDiv.classList.add("recap-main-container");
+  mainContainer.appendChild(recapMainDiv);
+
   const answerRecapDiv = document.createElement("div");
   answerRecapDiv.classList.add("answer-recap-container");
-  mainContainer.appendChild(answerRecapDiv);
+  recapMainDiv.appendChild(answerRecapDiv);
 
   const answerRecapH3 = document.createElement("h3");
   answerRecapH3.classList.add("answer-recap-title");
@@ -289,7 +293,7 @@ const createRecap = () => {
 
   const answerRecapAllQuestions = document.createElement("div");
   answerRecapAllQuestions.classList.add("answer-recap-container-questions");
-  mainContainer.appendChild(answerRecapAllQuestions);
+  recapMainDiv.appendChild(answerRecapAllQuestions);
 
   const answeRecapUl = document.createElement("ul");
   answeRecapUl.classList.add("answer-recap-ul");
