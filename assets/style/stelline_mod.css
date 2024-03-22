@@ -114,7 +114,6 @@ form h2 {
 
 .newStarsClass {
   fill: #00ffff;
-  
 }
 
 .space {
@@ -128,7 +127,10 @@ form h2 {
   padding-bottom: 0.5em;
 }
 
-svg:hover {
+/*.glow {
+  filter: drop-shadow(-5px 5px 20px #00ffff);
+}*/
+.glow:hover {
   filter: drop-shadow(-5px 5px 20px #00ffff);
 }
 
