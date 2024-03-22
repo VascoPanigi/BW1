@@ -130,7 +130,7 @@ form h2 {
 /*.glow {
   filter: drop-shadow(-5px 5px 20px #00ffff);
 }*/
-.glow:hover {
+svg:hover {
   filter: drop-shadow(-5px 5px 20px #00ffff);
 }
 
