@@ -276,3 +276,26 @@ header {
 #marginP {
   margin-left: 5px;
 }
+.recap-main-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+li {
+  list-style: none;
+  line-height: 1.35em;
+}
+
+.correct-answer {
+  color: #66bb6a;
+}
+.wrong-answer {
+  color: #f44336;
+}
+.answer-recap-container {
+  margin-block: 1.5em 1em;
+}
+.answer-recap-title {
+  font-size: 2em;
+}
